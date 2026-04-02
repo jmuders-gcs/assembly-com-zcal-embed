@@ -12,12 +12,22 @@ import { BridgeConfigProvider } from './sections/BridgeConfigProvider';
 import { ZcalEmbed } from './sections/ZcalEmbed';
 
 export const dynamic = 'force-dynamic';
+const FALLBACK_BOOKING_LINK = 'https://zcal.co/jmuders/60min';
 
 async function Content({ searchParams }: { searchParams: SearchParams }) {
   const session = await getSession(searchParams);
   const user = session.internalUser ?? session.client;
   const fullName = [user?.givenName, user?.familyName].filter(Boolean).join(' ');
-  const zcalInviteUrl = new URL('https://zcal.co/i/3mBcriVz');
+  const bookingLink = session.caseExecutiveBookingLink ?? FALLBACK_BOOKING_LINK;
+  let zcalInviteUrl = new URL(FALLBACK_BOOKING_LINK);
+
+  console.log('Session data:', session);
+
+  try {
+    zcalInviteUrl = new URL(bookingLink);
+  } catch {
+    zcalInviteUrl = new URL(FALLBACK_BOOKING_LINK);
+  }
 
   if (fullName) {
     zcalInviteUrl.searchParams.set('name', fullName);

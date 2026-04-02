@@ -78,13 +78,14 @@ export function SessionContext({ session }: { session: SessionData }) {
   const userName = user
     ? [user.givenName, user.familyName].filter(Boolean).join(' ')
     : 'Unknown User';
+  const isAdmin = session.internalUser?.role === 'admin';
 
   return (
     <section>
       <div className="mb-4">
         <Heading size="xl">Your Session Context</Heading>
         <Body size="base" className="text-gray-500 mt-1">
-          Data available from your session token
+          Data available from your session token (only visible for Admin users).
         </Body>
       </div>
 
@@ -158,6 +159,19 @@ export function SessionContext({ session }: { session: SessionData }) {
                 </Body>
               </div>
             </div>
+          </InfoCard>
+        )}
+
+        {session.caseExecutiveBookingLink && (
+          <InfoCard title="Case Executive Booking Link">
+            <a
+              href={session.caseExecutiveBookingLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline break-all"
+            >
+              {session.caseExecutiveBookingLink}
+            </a>
           </InfoCard>
         )}
       </div>
