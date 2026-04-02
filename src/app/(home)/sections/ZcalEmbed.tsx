@@ -21,7 +21,7 @@ export function ZcalEmbed({ inviteUrl }: ZcalEmbedProps) {
       />
 
       <div className="zcal-inline-widget zcal-embed-mask min-h-[700px] rounded-lg bg-white p-2">
-        <a href={inviteUrl}>30 Minute Meeting - Schedule a meeting</a>
+        <a href={inviteUrl}>Schedule a meeting</a>
       </div>
     </section>
   );
