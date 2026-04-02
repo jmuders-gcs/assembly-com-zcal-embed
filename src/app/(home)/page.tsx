@@ -35,7 +35,7 @@ async function Content({ searchParams }: { searchParams: SearchParams }) {
   return (
     <>
       <BridgeConfigProvider portalUrl={session.workspace?.portalUrl} />
-      <Container className="max-w-screen-lg">
+      <Container className="h-full w-full flex flex-1 flex-col relative">
         <div className="space-y-12">
           <ZcalEmbed inviteUrl={zcalInviteUrl.toString()} />
           <SessionContext session={session} />
