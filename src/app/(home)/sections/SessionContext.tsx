@@ -78,7 +78,6 @@ export function SessionContext({ session }: { session: SessionData }) {
   const userName = user
     ? [user.givenName, user.familyName].filter(Boolean).join(' ')
     : 'Unknown User';
-  const isAdmin = session.internalUser?.role === 'admin';
 
   return (
     <section>

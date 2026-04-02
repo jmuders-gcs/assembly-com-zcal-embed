@@ -16,6 +16,7 @@ const FALLBACK_BOOKING_LINK = 'https://zcal.co/jmuders/60min';
 
 async function Content({ searchParams }: { searchParams: SearchParams }) {
   const session = await getSession(searchParams);
+  const isAdmin = session.internalUser?.role === 'admin';
   const user = session.internalUser ?? session.client;
   const fullName = [user?.givenName, user?.familyName].filter(Boolean).join(' ');
   const bookingLink = session.caseExecutiveBookingLink ?? FALLBACK_BOOKING_LINK;
@@ -48,7 +49,7 @@ async function Content({ searchParams }: { searchParams: SearchParams }) {
       <Container className="h-full w-full flex flex-1 flex-col relative">
         <div className="space-y-12">
           <ZcalEmbed inviteUrl={zcalInviteUrl.toString()} />
-          <SessionContext session={session} />
+          {isAdmin && <SessionContext session={session} />}
         </div>
       </Container>
     </>
