@@ -17,7 +17,7 @@ export function proxy(request: NextRequest) {
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    frame-ancestors https://dashboard.copilot.app/ https://*.copilot.app/ dashboard.assembly.com https://*.myassembly.com;
+    frame-ancestors https://dashboard.copilot.app/ https://*.copilot.app/ dashboard.assembly.com https://*.myassembly.com https://portal.globalcitizensolutions.com;
     block-all-mixed-content;
     upgrade-insecure-requests;
 `;
