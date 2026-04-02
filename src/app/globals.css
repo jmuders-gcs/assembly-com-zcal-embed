@@ -7,3 +7,24 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+
+.zcal-inline-widget [data-component='powered-by-tag-contained'] {
+  display: none !important;
+}
+
+.zcal-embed-mask {
+  position: relative;
+  overflow: hidden;
+}
+
+.zcal-embed-mask::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70px;
+  background: #fff;
+  pointer-events: none;
+  z-index: 2;
+}
