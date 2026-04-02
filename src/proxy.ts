@@ -10,14 +10,16 @@ export function proxy(request: NextRequest) {
   // space separated frame-ancestors list.
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self' 'nonce-${nonce}';
-    img-src 'self' blob: data:;
-    font-src 'self';
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://static.zcal.co;
+    style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' blob: data: https:;
+    font-src 'self' data: https://fonts.gstatic.com;
+    frame-src 'self' https://zcal.co https://*.zcal.co;
+    connect-src 'self' https://zcal.co https://*.zcal.co;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    frame-ancestors https://dashboard.copilot.app/ https://*.copilot.app/ dashboard.assembly.com https://*.myassembly.com https://*.globalcitizensolutions.com;
+    frame-ancestors https://dashboard.copilot.app https://*.copilot.app https://dashboard.assembly.com https://*.myassembly.com https://*.globalcitizensolutions.com;
     block-all-mixed-content;
     upgrade-insecure-requests;
 `;
