@@ -20,7 +20,7 @@ export function ZcalEmbed({ inviteUrl }: ZcalEmbedProps) {
         strategy="afterInteractive"
       />
 
-      <div className="zcal-inline-widget min-h-[700px] rounded-lg border border-gray-200 bg-white p-2">
+      <div className="zcal-inline-widget min-h-[700px] rounded-lg bg-white p-2">
         <a href={inviteUrl}>30 Minute Meeting - Schedule a meeting</a>
       </div>
     </section>
