@@ -12,7 +12,8 @@ import { BridgeConfigProvider } from './sections/BridgeConfigProvider';
 import { ZcalEmbed } from './sections/ZcalEmbed';
 
 export const dynamic = 'force-dynamic';
-const FALLBACK_BOOKING_LINK = 'https://zcal.co/mwilliams/45min';
+const FALLBACK_BOOKING_LINK =
+  process.env.FALLBACK_BOOKING_LINK ?? 'https://zcal.co/mwilliams/45min';
 
 async function Content({ searchParams }: { searchParams: SearchParams }) {
   const session = await getSession(searchParams);
